@@ -357,6 +357,7 @@ NTSTATUS XexpLoadImageHook(LPCSTR xexName, DWORD typeInfo, DWORD ver, PHANDLE mo
 					//trun off protection as we are going back to xshell.
 					setMemProtect(false); // set mem protecc to off
 					printf("Truned Protection OFF!");
+					g_Protection_Mode = false;
 				}
 				rTemp = reader->Get("Config", "Redirect_Xshell_Start_But", "NOTFOUND");
 				if(rTemp != "NOTFOUND" && (rTemp != "1" && rTemp != "true" && rTemp!="on")  && (rTemp != "0" && rTemp != "false" && rTemp!="off")){
