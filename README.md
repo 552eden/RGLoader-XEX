@@ -4,7 +4,7 @@ This is a mod to RGLoader.xex that adds OGXbox emulator support by turning on me
 Original code for RGLoader.xex can be found here: https://github.com/RGLoader/RGLoader-XEX
 
 # IMPORTANT NOTES. READ THIS!
-- if this dosent work for you, you need to patch your nand image. rgloader team got an adress wrong. i will post the patch how to soon(TM).
+- if this dosent work for you, you need to patch your nand image. rgloader team got an adress wrong. patcher: https://github.com/552eden/RGPatcher
 - while the Guide (hud.xex) works now, going back to the dash usually crashes the console unless you press B before Avatars are loaded. will be fixed (maybe).
 - this is a beta and will probably crash here and there. please update me on crashes!
 
