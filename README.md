@@ -7,6 +7,7 @@ Original code for RGLoader.xex can be found here: https://github.com/RGLoader/RG
 - if this dosent work for you, you need to patch your nand image. rgloader team got an adress wrong. patcher: https://github.com/552eden/RGPatcher
 - while the Guide (hud.xex) works now, going back to the dash usually crashes the console unless you press B before Avatars are loaded. will be fixed (maybe).
 - this is a beta and will probably crash here and there. please update me on crashes!
+- This probably wont affect you, but this is the old (and more commonly used) version of RGLoader.xex. I also have a version of this for the new version: https://github.com/552eden/RGLoader
 
 # How to use?
 - Compile or grab latest RGLoader.xex form releases (https://github.com/552eden/RGLoader-XEX/releases#latest)
