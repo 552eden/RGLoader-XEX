@@ -306,6 +306,41 @@ HRESULT RetrieveLaunchData(BYTE* launchData, DWORD* pcbLaunchData)
     return hr;
 }
 
+// Helper function to perform a case-insensitive prefix comparison
+bool strnicmpp(const char* s1, const char* s2, size_t n) {
+    while (n-- && *s1 && *s2) {
+        if (tolower(*s1) != tolower(*s2)) {
+            return false;
+        }
+        ++s1;
+        ++s2;
+    }
+    return n == size_t(-1) || (tolower(*s1) == tolower(*s2));
+}
+
+// Function to check if the xexName matches the pattern "xefu.xex" or "xefu<number>.xex"
+bool matchesXefuPattern(const char* xexName) {
+    const char* basePath = "\\Device\\Harddisk0\\SystemPartition\\Compatibility\\xefu";
+    const char* extension = ".xex";
+    size_t basePathLen = strlen(basePath);
+    size_t extensionLen = strlen(extension);
+
+    // Check if the xexName starts with basePath
+    if (!strnicmpp(xexName, basePath, basePathLen)) {
+        return false;
+    }
+
+    // Move the pointer past the basePath
+    xexName += basePathLen;
+
+    // Check if the remaining part is a number followed by the extension
+    while (isdigit(*xexName)) {
+        ++xexName;
+    }
+
+    return stricmp(xexName, extension) == 0;
+}
+
 
 
 XEXPLOADIMAGEFUN XexpLoadImageSave = (XEXPLOADIMAGEFUN)XexpLoadImageSaveVar;
@@ -335,7 +370,9 @@ NTSTATUS XexpLoadImageHook(LPCSTR xexName, DWORD typeInfo, DWORD ver, PHANDLE mo
 		if(!g_Protection_Mode)
 		{
 			//if(stricmp(xexName, XEXLOAD_XEFU) == 0 || stricmp(xexName, XEXLOAD_XBOX_XEX) == 0 ){
-			if(stricmp(xexName, XEXLOAD_XEFU) == 0){
+			//if(stricmp(xexName, XEXLOAD_XEFU) == 0){
+			if(matchesXefuPattern(xexName)){
+				printf("newewewew");
 				printf("\n\n ***RGLoader.xex*** \n   -Re-applying patches to: %s!\n\n", xexName);
 				printf("\n\n turned on mem protect because we entered %s", xexName);
 				
