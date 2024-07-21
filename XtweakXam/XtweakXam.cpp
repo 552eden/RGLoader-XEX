@@ -347,7 +347,7 @@ NTSTATUS XexpLoadImageHook(LPCSTR xexName, DWORD typeInfo, DWORD ver, PHANDLE mo
 				{
 					printf("\n\nproto shutdown request sent!\n\n");
 					printf("\n\n reloading xex\n\n");
-					ReloadXex(XEXLOAD_XEFU, modHandle);
+					ReloadXex(xexName, modHandle);
 					printf("\n\nproto is down, enabling memory protection!");
 					Sleep(500);
 					setMemProtect(true); // set mem protecc to on
